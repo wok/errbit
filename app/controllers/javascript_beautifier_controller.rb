@@ -1,11 +1,11 @@
 class JavascriptBeautifierController < ApplicationController
   def beautify
     begin
-      beautified_js, @source_map = JavascriptBeautifier.fetch_and_beautify(params[:url])
+      @javascript, @source_map = JavascriptBeautifier.fetch_and_beautify(params[:url])
 
-      formatter = Rouge::Formatters::HTML.new(:css_class => 'highlight')
-      lexer = Rouge::Lexers::Javascript.new
-      @javascript = formatter.format(lexer.lex(beautified_js))
+      # formatter = Rouge::Formatters::HTML.new(:css_class => 'highlight')
+      # lexer = Rouge::Lexers::Javascript.new
+      # @javascript = formatter.format(lexer.lex(@javascript))
 
     rescue Exception => e
       @source_map = "{}"
