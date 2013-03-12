@@ -8,7 +8,7 @@ describe Mailer do
     let(:notice)  { Fabricate(:notice, :message => "class < ActionController::Base") }
 
     before do
-      notice.backtrace.lines.last.update_attributes(:file => "[PROJECT_ROOT]/path/to/file.js")
+      notice.backtrace.lines.last.update_attributes(:file => "[PROJECT_ROOT]/path/to/file.js", :number => 5, :column => 45)
       notice.app.update_attributes :asset_host => "http://example.com"
       notice.problem.update_attributes :notices_count => 3
 
@@ -28,7 +28,7 @@ describe Mailer do
     end
 
     it "should have links to source files" do
-      @email.should have_body_text('<a href="http://example.com/path/to/file.js" target="_blank">path/to/file.js')
+      @email.should have_body_text('js_beautifier?url=http://example.com/path/to/file.js#5:45" target="_blank">path/to/file.js')
     end
 
     it "should have the error count in the subject" do
