@@ -1,21 +1,22 @@
 /*= require syntax_highlighting */
 
 body {
-  color: #faf6e4;
-  background-color: #122b3b;
+  color: black;
+  background-color: white;
   margin: 0;
   padding: 50px 0 0 0;
 }
 
 pre {
   padding: 15px;
-  line-height: 15px;
-  font-family: 'Ubuntu Mono', 'Monaco', monospace;
+  line-height: 1.4;
+  font-family: Consolas,"Liberation Mono",Courier,monospace;
+  font-size: 12px;
 }
 
 #jump {
   color: #444;
-  font-family: 'Ubuntu Mono', 'Monaco', monospace;
+  font-family: Consolas,"Liberation Mono",Courier,monospace;
   border-bottom: 2px solid #CDCDCD;
   background-color: #CDCDCD;
   padding: 10px;
