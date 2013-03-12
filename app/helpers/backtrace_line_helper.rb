@@ -26,7 +26,14 @@ module BacktraceLineHelper
       # Fetch asset and show beautified JS with source map
       line_and_column = "#{line.number}"
       line_and_column << ":#{line.column}" if line.column?
-      link_to(text, "/js_beautifier?url=#{asset_url}##{line_and_column}", :target => '_blank')
+
+      host = ''
+      unless Rails.env.development?
+        protocol = Errbit::Config.enforce_ssl ? 'https://' : 'http://'
+        host = "#{protocol}#{Errbit::Config.host}"
+      end
+
+      link_to(text, "#{host}/js_beautifier?url=#{asset_url}##{line_and_column}", :target => '_blank')
     end
   end
 
