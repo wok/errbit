@@ -16,6 +16,7 @@ gem 'kaminari', '>= 0.14.1'
 gem 'rack-ssl-enforcer'
 gem 'fabrication', "~> 1.3.0"   # Used for both tests and demo data
 gem 'rails_autolink', '~> 1.0.9'
+
 # Please don't update hoptoad_notifier to airbrake.
 # It's for internal use only, and we monkeypatch certain methods
 gem 'hoptoad_notifier', "~> 2.4"
@@ -110,9 +111,12 @@ gem 'thin', :group => :development, :platform => :ruby
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'execjs'
-  gem 'therubyracer', :platform => :ruby  # C Ruby (MRI) or Rubinius, but NOT Windows
-  gem 'uglifier',     '>= 1.0.3'
   gem 'underscore-rails'
   gem 'turbo-sprockets-rails3'
 end
+
+gem 'execjs'
+gem 'therubyracer', :platform => :ruby  # C Ruby (MRI) or Rubinius, but NOT Windows
+# For beautifying javascript assets
+gem 'uglifier', :github => 'lautis/uglifier'
+gem 'rouge'

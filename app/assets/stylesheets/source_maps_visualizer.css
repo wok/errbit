@@ -1,0 +1,35 @@
+/*= require syntax_highlighting */
+
+body {
+  color: #faf6e4;
+  background-color: #122b3b;
+  margin: 0;
+  padding: 50px 0 0 0;
+}
+
+pre {
+  padding: 15px;
+  line-height: 15px;
+  font-family: 'Ubuntu Mono', 'Monaco', monospace;
+}
+
+#jump {
+  color: #444;
+  font-family: 'Ubuntu Mono', 'Monaco', monospace;
+  border-bottom: 2px solid #CDCDCD;
+  background-color: #CDCDCD;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom-right-radius: 10px;
+}
+
+.line-highlight {
+  background-color: #2A4B5F;
+}
+
+.column-highlight {
+  color: #fefeec;
+  background-color: #cc0000;
+}

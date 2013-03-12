@@ -21,7 +21,12 @@ module BacktraceLineHelper
 
   def link_to_hosted_javascript(line, text)
     if line.app.asset_host?
-      link_to(text, "#{line.app.asset_host}/#{line.file_relative}", :target => '_blank')
+      asset_url = "#{line.app.asset_host}/#{line.file_relative}"
+
+      # Fetch asset and show beautified JS with source map
+      line_and_column = "#{line.number}"
+      line_and_column << ":#{line.column}" if line.column?
+      link_to(text, "/source_map?url=#{asset_url}##{line_and_column}", :target => '_blank')
     end
   end
 

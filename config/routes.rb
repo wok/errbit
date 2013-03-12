@@ -7,6 +7,8 @@ Errbit::Application.routes.draw do
   match '/locate/:id' => 'notices#locate', :as => :locate
   match '/deploys.txt' => 'deploys#create'
 
+  get '/source_map' => 'source_maps#visualizer'
+
   resources :notices,   :only => [:show]
   resources :deploys,   :only => [:show]
   resources :users do

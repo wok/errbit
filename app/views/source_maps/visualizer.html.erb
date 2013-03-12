@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Beautified Javascript</title>
+
+  <%= stylesheet_link_tag :source_maps_visualizer %>
+  <%= javascript_include_tag :source_maps_visualizer %>
+
+  <script charset="UTF-8" type="text/javascript">
+  // Generated Source Map
+  window.rawSourceMap = <%= @source_map.html_safe %>;
+  </script>
+<body>
+<div id="jump">
+  Jump to <input id="line" placeholder="line"> : <input id="column" placeholder="column">
+  <button id="go">Go!</button>
+</div>
+
+<% if @error %>
+<br><p>Could not process <%= params[:url] %></p><br>
+<h1>Error: <%= @error.class %></h3>
+<h3><%= @error.message %></h3>
+<% end %>
+
+<% if @javascript %>
+<pre id="source" class="highlight">
+  <%= @javascript.html_safe %>
+</pre>
+<% end %>
+
+</body>
+</html>
