@@ -2,6 +2,19 @@
 //= require source-map.min.js
 
 $(document).ready(function() {
+    // Reformat source to add line metadata
+    var sourceElement = $('#source')
+    var lines = sourceElement.html().split(/\n/);
+    var html = "";
+    var n = lines.length;
+    for(var i = 0 ; i < n ; i++)
+    {
+        html += "<div id='line_" + (i+1) + "'>";
+        html += lines[i];
+        html += "</div>";
+    }
+    sourceElement.html(html);
+
     // Parse Source Map
     var sourceMap = window.sourceMap;
     var sourceMapConsumer = new sourceMap.SourceMapConsumer(window.rawSourceMap)
@@ -24,12 +37,17 @@ $(document).ready(function() {
 
         // Highlight line
         $(".line-highlight").removeClass("line-highlight");
-        $lineElement = $($('#source .line')[generatedLine]);
-        $lineElement.addClass("line-highlight");
+        lineElement = $("#line_" + generatedLine);
+        lineElement.addClass("line-highlight");
 
         $('html, body').animate({
-            scrollTop: $lineElement.offset().top - 200
+            scrollTop: lineElement.offset().top - 200
         }, 500);
+    });
+
+    // Handle enter keypress on inputs
+    $('#jump input').keypress(function(e) {
+        if(e.which == 13) $('#go').click();
     });
 
    // Line/Column specified in URL

@@ -7,11 +7,6 @@ class JavascriptBeautifierController < ApplicationController
       lexer = Rouge::Lexers::Javascript.new
       @javascript = formatter.format(lexer.lex(beautified_js))
 
-      # Wrap each line in a div
-      @javascript = '<div class="line">' +
-                    @javascript.gsub("\n", "</div><div class=\"line\">") +
-                    '</div>'
-
     rescue Exception => e
       @source_map = "{}"
       @error = e
