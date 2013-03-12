@@ -26,7 +26,7 @@ module BacktraceLineHelper
       # Fetch asset and show beautified JS with source map
       line_and_column = "#{line.number}"
       line_and_column << ":#{line.column}" if line.column?
-      link_to(text, "/source_map?url=#{asset_url}##{line_and_column}", :target => '_blank')
+      link_to(text, "/js_beautifier?url=#{asset_url}##{line_and_column}", :target => '_blank')
     end
   end
 

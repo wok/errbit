@@ -7,7 +7,7 @@ Errbit::Application.routes.draw do
   match '/locate/:id' => 'notices#locate', :as => :locate
   match '/deploys.txt' => 'deploys#create'
 
-  get '/source_map' => 'source_maps#visualizer'
+  get '/js_beautifier' => 'javascript_beautifier#beautify'
 
   resources :notices,   :only => [:show]
   resources :deploys,   :only => [:show]

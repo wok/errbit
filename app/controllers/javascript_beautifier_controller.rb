@@ -1,5 +1,5 @@
-class SourceMapsController < ApplicationController
-  def visualizer
+class JavascriptBeautifierController < ApplicationController
+  def beautify
     begin
       beautified_js, @source_map = JavascriptBeautifier.fetch_and_beautify(params[:url])
 

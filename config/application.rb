@@ -70,7 +70,7 @@ module Errbit
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    config.assets.precompile += %w(source_maps_visualizer.js source_maps_visualizer.css)
+    config.assets.precompile += %w(javascript_beautifier.js javascript_beautifier.css)
 
     # Need to initialize Rails environment for issue_tracker_icons.css.erb
     config.assets.initialize_on_precompile = true
