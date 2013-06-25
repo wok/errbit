@@ -25,8 +25,25 @@ class NotificationServices::PushoverService < NotificationService
     # build the hoi client
     notification = Rushover::Client.new(subdomain)
 
-    # send push notification to pushover
-    notification.notify(api_token, "#{notification_description problem}", :priority => 1, :title => "Errbit Notification", :url => "http://#{Errbit::Config.host}/apps/#{problem.app.id.to_s}", :url_title => "Link to error")
+    message = "#{problem.message.to_s.truncate(200)}"
 
+    options = {
+      title: "#{problem.app_name}",
+      priority: 0,
+      url: "https://#{Errbit::Config.host}/apps/#{problem.app.id.to_s}",
+      url_title: 'Show'
+    }
+
+
+
+    if problem.notices_count == 1 
+      options[:sound] = 'none'
+    else
+      options[:title] += " (#{problem.notices_count})"
+    end
+
+    api_token.split( ',' ).each do |token|
+      notification.notify( token, message, options )
+    end
   end
 end
