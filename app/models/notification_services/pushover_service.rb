@@ -25,7 +25,7 @@ class NotificationServices::PushoverService < NotificationService
     # build the hoi client
     notification = Rushover::Client.new(subdomain)
 
-    message = "#{problem.message.to_s.truncate(200)}"
+    message = "#{problem.where}\n#{problem.message.to_s.truncate(200)}"
 
     options = {
       title: "#{problem.app_name}",
